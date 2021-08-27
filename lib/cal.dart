@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class Cal extends StatefulWidget {
+ 
   @override
   _CalState createState() => _CalState();
 }
 
 class _CalState extends State<Cal> {
   var output = " ";
+  // TextEditingController 
   Widget xyz(no) {
        return ElevatedButton(
             onPressed: () {
@@ -18,9 +20,7 @@ class _CalState extends State<Cal> {
             child: Text(no),
             style: ElevatedButton.styleFrom(
             padding: EdgeInsets.all(20.0),
-            primary: Colors.blue,
-            onPrimary: Colors.black,
-            shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+            
             textStyle: TextStyle(
                       
                       fontSize: 30,
@@ -36,6 +36,12 @@ clear() {
     });
   }
 
+delete(){
+  output=
+}
+
+
+
   result() {
     Parser p = Parser();
     Expression exp = p.parse(output);
@@ -49,6 +55,7 @@ clear() {
 
   
   @override
+  
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -73,16 +80,38 @@ clear() {
                                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                               crossAxisAlignment: CrossAxisAlignment.stretch,
                                                children: [
-                                              // Row 1
+                                               // Row 1
                                                Row(
                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                  children: [
-                                                     xyz("1"),
-                                                     xyz("2"),
-                                                     xyz("3"),
-                                                     xyz("+"),
+                                                     ElevatedButton(onPressed: clear, child: Text("C"),style: ElevatedButton.styleFrom(
+                                                           padding: EdgeInsets.all(20.0),
+                                                           textStyle: TextStyle(
+                                                           fontSize: 30,
+                                                           fontWeight: FontWeight.bold
+                                                           ) ),),
+                                                     xyz("."),
+                                                     xyz(","),
+                                                     ElevatedButton(onPressed: delete, child: Text("D"),style: ElevatedButton.styleFrom(
+                                                           padding: EdgeInsets.all(20.0),
+                                                           textStyle: TextStyle(
+                                                           fontSize: 30,
+                                                           fontWeight: FontWeight.bold
+                                                           ) ),),
+                                                    // ElevatedButton(onPressed: (){
+
+                                                    // }, child: Text("D"))
                                                       ],),
                                               // Row 2
+                                               Row(
+                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                 children: [
+                                                     xyz("7"),
+                                                     xyz("8"),
+                                                     xyz("9"),
+                                                     xyz("+"),
+                                                      ],),
+                                              // Row 3
                                                Row(
                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                  children: [
@@ -91,41 +120,31 @@ clear() {
                                                      xyz("6"),
                                                      xyz("-"),
                                                       ],),
-                                              // Row 3
-                                               Row(
-                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                 children: [
-                                                     xyz("7"),
-                                                     xyz("8"),
-                                                     xyz("9"),
-                                                     xyz("*"),
-                                                      ],),
-                                                    
                                               // Row 4
                                                Row(
                                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                  children: [
-                                                     ElevatedButton(onPressed: clear, child: Text("C"),style: ElevatedButton.styleFrom(
-                                                           padding: EdgeInsets.all(20.0),
-                                                           primary: Colors.blue,
-                                                           onPrimary: Colors.black,
-                                                           shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
-                                                           textStyle: TextStyle(
-                                                           fontSize: 30,
-                                                           fontWeight: FontWeight.bold
-                                                           ) ),),
+                                                     xyz("1"),
+                                                     xyz("2"),
+                                                     xyz("3"),
+                                                     xyz("*"),
+                                                      ],),
+                                                    
+                                              // Row 5
+                                               Row(
+                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                 children: [
+                                                     xyz("."),
                                                      xyz("0"),
+                                                     xyz("/"),
                                                      ElevatedButton(onPressed: result, child: Text("="),style: ElevatedButton.styleFrom(
                                                            padding: EdgeInsets.all(20.0),
-                                                           primary: Colors.blue,
-                                                           onPrimary: Colors.black,
-                                                           shape: const BeveledRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
                                                            textStyle: TextStyle(
                                                            fontSize: 30,
-                                                           fontWeight: FontWeight.bold
                                                            ) ),),
-                                                     xyz("/"),
+                                                     
                                                       ],),
+                                                      
                                                 ],
                                            )
                                       ),
